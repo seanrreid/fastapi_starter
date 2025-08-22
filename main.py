@@ -29,7 +29,12 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
 
+# DELETE THE ROUTES BELOW
+# DEMO PURPOSES ONLY
+
 # READ data
+
+
 @app.get("/stuff")
 async def get_all_stuff(session: Session = Depends(get_session)):
     statement = select(Stuff)
@@ -38,6 +43,7 @@ async def get_all_stuff(session: Session = Depends(get_session)):
 
 # READ specific data
 
+
 @app.get("/stuff/{id}")
 async def get_single_stuff(id: str, session: Session = Depends(get_session)):
     statement = select(Stuff).where(Stuff.id == id)
@@ -45,6 +51,7 @@ async def get_single_stuff(id: str, session: Session = Depends(get_session)):
     return result
 
 # CREATE data
+
 
 @app.post("/stuff/add")
 async def add_stuff(payload: Stuff, session: Session = Depends(get_session)):
